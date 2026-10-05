@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Register Land | LandChain</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        .register-page {
+            min-height: 100vh;
+            padding: 110px 20px 60px;
+            background: #08111f;
+        }
+
+        .register-container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .register-header {
+            margin-bottom: 35px;
+        }
+
+        .register-header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .register-header p {
+            color: #94a3b8;
+            font-size: 16px;
+        }
+
+        .form-card {
+            background: #101b2b;
+            border: 1px solid #24344d;
+            border-radius: 22px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .form-section-title {
+            font-size: 20px;
+            color: #ffffff;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #24344d;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            color: #e2e8f0;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 9px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            box-sizing: border-box;
+            background: #0a1322;
+            border: 1px solid #2a3b55;
+            border-radius: 10px;
+            padding: 14px 16px;
+            color: #ffffff;
+            font-size: 15px;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #65d3a0;
+            box-shadow: 0 0 0 3px rgba(101, 211, 160, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #64748b;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 35px;
+        }
+
+        .register-button {
+            background: #65d3a0;
+            color: #06101d;
+            border: none;
+            border-radius: 10px;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .register-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(101, 211, 160, 0.2);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #65d3a0;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 700px) {
+            .register-page {
+                padding: 90px 15px 40px;
+            }
+
+            .form-card {
+                padding: 25px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full-width {
+                grid-column: auto;
+            }
+
+            .register-header h1 {
+                font-size: 32px;
+            }
+
+            .form-actions {
+                justify-content: stretch;
+            }
+
+            .register-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="register-page">
+
+        <div class="register-container">
+
+            <div class="register-header">
+                <h1>Register Land</h1>
+                <p>
+                    Create a secure digital land record on the LandChain platform.
+                </p>
+            </div>
+
+            <form action="{{ url_for('register_land') }}" method="POST">
+
+                <div class="form-card">
+
+                    <!-- OWNER INFORMATION -->
+
+                    <div class="form-section-title">
+                        Owner Information
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="owner_name">
+                                Owner Name *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="owner_name"
+                                name="owner_name"
+                                placeholder="Enter owner name"
+                                value="Rahul Chauhan"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="guardian_name">
+                                Guardian Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="guardian_name"
+                                name="guardian_name"
+                                placeholder="Enter guardian name"
+                                value="Rajesh Chauhan"
+                            >
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="survey_number">
+                                Survey Number *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="survey_number"
+                                name="survey_number"
+                                placeholder="Example: 102/5"
+                                value="102/5"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="area">
+                                Land Area (Acres) *
+                            </label>
+
+                            <input
+                                type="number"
+                                id="area"
+                                name="area"
+                                placeholder="Enter land area"
+                                step="0.01"
+                                value="2.5"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="land_type">
+                                Land Type *
+                            </label>
+
+                            <select
+                                id="land_type"
+                                name="land_type"
+                                required
+                            >
+                                <option value="">Select land type</option>
+
+                                <option value="Agricultural">
+                                    Agricultural
+                                </option>
+
+                                <option value="Residential" selected>
+                                    Residential
+                                </option>
+
+                                <option value="Commercial">
+                                    Commercial
+                                </option>
+
+                                <option value="Industrial">
+                                    Industrial
+                                </option>
+                            </select>
+                        </div>
+
+                    </div>
+
+
+                    <!-- LOCATION INFORMATION -->
+
+                    <div class="form-section-title" style="margin-top: 40px;">
+                        Property Location
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="state">
+                                State *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="state"
+                                name="state"
+                                placeholder="Enter state"
+                                value="Karnataka"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="district">
+                                District *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="district"
+                                name="district"
+                                placeholder="Enter district"
+                                value="Bengaluru Urban"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="taluk">
+                                Taluk
+                            </label>
+
+                            <input
+                                type="text"
+                                id="taluk"
+                                name="taluk"
+                                placeholder="Enter taluk"
+                                value="Anekal"
+                            >
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="village">
+                                Village
+                            </label>
+
+                            <input
+                                type="text"
+                                id="village"
+                                name="village"
+                                placeholder="Enter village"
+                                value="Chandapura"
+                            >
+                        </div>
+
+
+                        <div class="form-group full-width">
+                            <label for="address">
+                                Property Address
+                            </label>
+
+                            <textarea
+                                id="address"
+                                name="address"
+                                placeholder="Enter complete property address"
+                            >25, Main Road, Chandapura, Anekal Taluk, Bengaluru Urban, Karnataka - 562106</textarea>
+                        </div>
+
+                    </div>
+
+
+                    <!-- REGISTRATION INFORMATION -->
+
+                    <div class="form-section-title" style="margin-top: 40px;">
+                        Registration Information
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="registration_date">
+                                Registration Date *
+                            </label>
+
+                            <!-- Normal text field so the date can be typed easily -->
+
+                            <input
+                                type="text"
+                                id="registration_date"
+                                name="registration_date"
+                                placeholder="DD-MM-YYYY"
+                                value="05-10-2026"
+                                maxlength="10"
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+
+                    <!-- BUTTON -->
+
+                    <div class="form-actions">
+
+                        <button
+                            type="submit"
+                            class="register-button"
+                        >
+                            Register Land →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+
+            <a
+                href="{{ url_for('home') }}"
+                class="back-link"
+            >
+                ← Back to Home
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

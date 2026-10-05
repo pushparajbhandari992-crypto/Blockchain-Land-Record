@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Land Records | LandChain</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+
+        .records-page {
+            min-height: 100vh;
+            padding: 60px 7%;
+            background: #07111f;
+        }
+
+        .records-container {
+            max-width: 1250px;
+            margin: auto;
+        }
+
+        .records-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+        }
+
+        .records-header h1 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 36px;
+        }
+
+        .records-header p {
+            color: #8291a2;
+            font-size: 13px;
+        }
+
+        .add-btn {
+            padding: 13px 20px;
+            border-radius: 8px;
+            background: #20c997;
+            color: #06131f;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 15px;
+
+            background: #0b1928;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            padding: 17px;
+            text-align: left;
+
+            color: #20c997;
+
+            font-size: 11px;
+            letter-spacing: 1px;
+
+            background: #0e2032;
+        }
+
+        td {
+            padding: 17px;
+
+            border-top: 1px solid rgba(255,255,255,0.06);
+
+            color: #c8d1db;
+
+            font-size: 13px;
+        }
+
+        .land-id {
+            color: #20c997;
+            font-weight: 700;
+        }
+
+        .status-active {
+            display: inline-block;
+
+            padding: 5px 9px;
+
+            border-radius: 20px;
+
+            background: rgba(32,201,151,0.10);
+
+            color: #20c997;
+
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 60px;
+            color: #8291a2;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<section class="records-page">
+
+    <div class="records-container">
+
+        <div class="records-header">
+
+            <div>
+
+                <h1>Land Records</h1>
+
+                <p>
+                    Registered properties in the LandChain registry
+                </p>
+
+            </div>
+
+            <a
+                href="/register-land"
+                class="add-btn">
+
+                + Register Land
+
+            </a>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            {% if records %}
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>LAND ID</th>
+                        <th>OWNER</th>
+                        <th>SURVEY NO.</th>
+                        <th>AREA</th>
+                        <th>TYPE</th>
+                        <th>LOCATION</th>
+                        <th>STATUS</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for record in records %}
+
+                    <tr>
+
+                        <td class="land-id">
+                            {{ record["land_id"] }}
+                        </td>
+
+                        <td>
+                            {{ record["owner_name"] }}
+                        </td>
+
+                        <td>
+                            {{ record["survey_number"] }}
+                        </td>
+
+                        <td>
+                            {{ record["area"] }} Acres
+                        </td>
+
+                        <td>
+                            {{ record["land_type"] }}
+                        </td>
+
+                        <td>
+                            {{ record["district"] }}, {{ record["state"] }}
+                        </td>
+
+                        <td>
+
+                            <span class="status-active">
+                                {{ record["status"] }}
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+            {% else %}
+
+            <div class="empty">
+
+                <h3>No Land Records Yet</h3>
+
+                <p>
+                    Register your first property to see it here.
+                </p>
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</section>
+
+</body>
+
+</html>
