@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LandChain | Blockchain Land Record Management</title>
+
+    <meta name="description"
+          content="LandChain is a blockchain-based land record management system for secure, transparent and tamper-resistant digital land records.">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="{{ url_for('home') }}" class="logo">
+                <span class="logo-icon">⛓</span>
+                <span>LandChain</span>
+            </a>
+
+            <nav class="nav-links">
+
+                <a href="{{ url_for('home') }}" class="active">
+                    Home
+                </a>
+
+                <a href="#features">
+                    Features
+                </a>
+
+                <a href="#how-it-works">
+                    How It Works
+                </a>
+
+                <a href="#about">
+                    About
+                </a>
+
+            </nav>
+
+            <div class="nav-buttons">
+
+                <a href="#about" class="btn btn-outline">
+                    Login
+                </a>
+
+                <a href="{{ url_for('register_land') }}" class="btn btn-primary">
+                    Get Started
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-container">
+
+                <div class="hero-content">
+
+                    <div class="badge">
+                        🔐 Blockchain-Powered Land Records
+                    </div>
+
+                    <h1>
+                        Secure Land Records.
+                        <span>Built on Blockchain.</span>
+                    </h1>
+
+                    <p>
+                        LandChain provides a secure, transparent and
+                        tamper-resistant platform for managing digital
+                        land ownership records.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="{{ url_for('register_land') }}"
+                           class="btn btn-primary btn-large">
+                            Register Land →
+                        </a>
+
+                        <a href="{{ url_for('land_records') }}"
+                           class="btn btn-outline btn-large">
+                            View Land Records
+                        </a>
+
+                    </div>
+
+                    <div class="trust-text">
+                        ✓ Secure &nbsp;&nbsp;
+                        ✓ Transparent &nbsp;&nbsp;
+                        ✓ Tamper-Resistant
+                    </div>
+
+                </div>
+
+
+                <!-- Blockchain visual -->
+
+                <div class="blockchain-card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <small>BLOCKCHAIN NETWORK</small>
+                            <h3>LandChain Ledger</h3>
+                        </div>
+
+                        <div class="status">
+                            <span class="status-dot"></span>
+                            Active
+                        </div>
+
+                    </div>
+
+
+                    <div class="blocks">
+
+                        <div class="block">
+
+                            <div class="block-number">
+                                BLOCK #1042
+                            </div>
+
+                            <div class="block-data">
+                                Land Registration
+                            </div>
+
+                            <div class="hash">
+                                SHA-256: 7f3a...91bc
+                            </div>
+
+                        </div>
+
+
+                        <div class="chain-line">
+                            ↓
+                        </div>
+
+
+                        <div class="block">
+
+                            <div class="block-number">
+                                BLOCK #1043
+                            </div>
+
+                            <div class="block-data">
+                                Ownership Update
+                            </div>
+
+                            <div class="hash">
+                                SHA-256: a92d...4e71
+                            </div>
+
+                        </div>
+
+
+                        <div class="chain-line">
+                            ↓
+                        </div>
+
+
+                        <div class="block">
+
+                            <div class="block-number">
+                                BLOCK #1044
+                            </div>
+
+                            <div class="block-data">
+                                Record Verified
+                            </div>
+
+                            <div class="hash">
+                                SHA-256: c82a...73de
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= STATS ================= -->
+
+        <section class="stats">
+
+            <div class="stats-container">
+
+                <div class="stat">
+                    <h2>100%</h2>
+                    <p>Record Integrity</p>
+                </div>
+
+                <div class="stat">
+                    <h2>SHA-256</h2>
+                    <p>Secure Hashing</p>
+                </div>
+
+                <div class="stat">
+                    <h2>24/7</h2>
+                    <p>Digital Access</p>
+                </div>
+
+                <div class="stat">
+                    <h2>1</h2>
+                    <p>Trusted Ledger</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FEATURES ================= -->
+
+        <section id="features" class="section">
+
+            <div class="section-heading">
+
+                <div class="section-badge">
+                    PLATFORM FEATURES
+                </div>
+
+                <h2>
+                    Everything You Need to
+                    <span>Manage Land Records</span>
+                </h2>
+
+                <p>
+                    A modern digital platform designed to make land
+                    record management secure, simple and transparent.
+                </p>
+
+            </div>
+
+
+            <div class="features-grid">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        🔐
+                    </div>
+
+                    <h3>Secure Records</h3>
+
+                    <p>
+                        Protect land information using secure digital
+                        records and cryptographic hashing.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        ⛓️
+                    </div>
+
+                    <h3>Blockchain Ledger</h3>
+
+                    <p>
+                        Store transaction records in a connected
+                        blockchain structure that helps detect changes.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        ✓
+                    </div>
+
+                    <h3>Instant Verification</h3>
+
+                    <p>
+                        Verify land records quickly using unique
+                        land identification information.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        🔄
+                    </div>
+
+                    <h3>Ownership Transfer</h3>
+
+                    <p>
+                        Maintain a digital history of ownership
+                        transfers and record updates.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        📜
+                    </div>
+
+                    <h3>Digital Certificates</h3>
+
+                    <p>
+                        Generate digital land certificates containing
+                        verified record information.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        📊
+                    </div>
+
+                    <h3>Smart Analytics</h3>
+
+                    <p>
+                        View useful statistics and insights from
+                        registered land records.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= HOW IT WORKS ================= -->
+
+        <section id="how-it-works" class="section process-section">
+
+            <div class="section-heading">
+
+                <div class="section-badge">
+                    HOW IT WORKS
+                </div>
+
+                <h2>
+                    From Registration to
+                    <span>Verification</span>
+                </h2>
+
+                <p>
+                    LandChain uses a simple digital workflow backed
+                    by blockchain-style hashing.
+                </p>
+
+            </div>
+
+
+            <div class="process-grid">
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        01
+                    </div>
+
+                    <h3>Register</h3>
+
+                    <p>
+                        Enter the required land and ownership
+                        information into the system.
+                    </p>
+
+                </div>
+
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        02
+                    </div>
+
+                    <h3>Hash</h3>
+
+                    <p>
+                        Important record information can be converted
+                        into a SHA-256 digital hash.
+                    </p>
+
+                </div>
+
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        03
+                    </div>
+
+                    <h3>Store</h3>
+
+                    <p>
+                        The land record and transaction information
+                        are stored in the system.
+                    </p>
+
+                </div>
+
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        04
+                    </div>
+
+                    <h3>Verify</h3>
+
+                    <p>
+                        The system can verify the record and check
+                        its blockchain history.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ABOUT ================= -->
+
+        <section id="about" class="section about-section">
+
+            <div class="about-container">
+
+                <div class="about-content">
+
+                    <div class="section-badge">
+                        ABOUT LANDCHAIN
+                    </div>
+
+                    <h2>
+                        A Modern Approach to
+                        <span>Digital Land Records</span>
+                    </h2>
+
+                    <p>
+                        LandChain is an academic prototype that
+                        demonstrates how blockchain concepts can
+                        be applied to digital land record management.
+                    </p>
+
+                    <p>
+                        Each important transaction can be connected
+                        to the previous transaction using cryptographic
+                        hashes, creating a transparent chain of records.
+                    </p>
+
+                    <div class="about-points">
+
+                        <div>
+                            ✓ Digital land registration
+                        </div>
+
+                        <div>
+                            ✓ Ownership history
+                        </div>
+
+                        <div>
+                            ✓ Blockchain verification
+                        </div>
+
+                        <div>
+                            ✓ Tamper detection
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="about-card">
+
+                    <div class="about-card-icon">
+                        ⛓
+                    </div>
+
+                    <h3>
+                        Secure. Transparent.
+                        Tamper-Resistant.
+                    </h3>
+
+                    <p>
+                        Built with Python, Flask, SQLite and
+                        SHA-256 hashing for an educational
+                        blockchain implementation.
+                    </p>
+
+                    <a href="{{ url_for('register_land') }}"
+                       class="btn btn-primary">
+                        Start Registration →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CTA ================= -->
+
+        <section class="cta">
+
+            <div class="cta-container">
+
+                <h2>
+                    Ready to Create a Secure Land Record?
+                </h2>
+
+                <p>
+                    Start by registering your first digital land record
+                    in the LandChain system.
+                </p>
+
+                <a href="{{ url_for('register_land') }}"
+                   class="btn btn-primary btn-large">
+                    Register Your Land →
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+
+                <div class="logo">
+                    <span class="logo-icon">⛓</span>
+                    <span>LandChain</span>
+                </div>
+
+                <p>
+                    Blockchain-Based Land Record Management System
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="{{ url_for('home') }}">
+                    Home
+                </a>
+
+                <a href="#features">
+                    Features
+                </a>
+
+                <a href="#how-it-works">
+                    How It Works
+                </a>
+
+                <a href="#about">
+                    About
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 LandChain. Academic Prototype.
+            </p>
+
+            <p>
+                Built with Python + Flask + SQLite + Blockchain
+            </p>
+
+        </div>
+
+    </footer>
+
+
+</body>
+</html>
