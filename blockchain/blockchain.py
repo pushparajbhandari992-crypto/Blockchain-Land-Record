@@ -19,23 +19,18 @@ class Block:
             + str(self.previous_hash)
         )
 
-        return hashlib.sha256(
-            block_content.encode()
-        ).hexdigest()
+        return hashlib.sha256(block_content.encode()).hexdigest()
 
 
 class Blockchain:
 
     def __init__(self):
-        self.chain = [
-            self.create_genesis_block()
-        ]
+        self.chain = [self.create_genesis_block()]
 
     def create_genesis_block(self):
-
         return Block(
             0,
-            str(datetime.now()),
+            "2026-01-01 00:00:00",
             {
                 "type": "Genesis Block",
                 "message": "LandChain Blockchain Started"
@@ -47,7 +42,6 @@ class Blockchain:
         return self.chain[-1]
 
     def add_block(self, data):
-
         latest_block = self.get_latest_block()
 
         new_block = Block(
@@ -60,9 +54,7 @@ class Blockchain:
         self.chain.append(new_block)
 
     def is_chain_valid(self):
-
         for i in range(1, len(self.chain)):
-
             current_block = self.chain[i]
             previous_block = self.chain[i - 1]
 
