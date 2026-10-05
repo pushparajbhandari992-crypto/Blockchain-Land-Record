@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Land Record | LandChain</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        .edit-page {
+            padding: 60px 8%;
+            min-height: 80vh;
+        }
+
+        .edit-container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .edit-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .edit-header h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .edit-header p {
+            opacity: 0.7;
+        }
+
+        .form-card {
+            padding: 35px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 13px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.07);
+            color: white;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #6c63ff;
+        }
+
+        .button-row {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .save-btn,
+        .cancel-btn {
+            padding: 13px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .save-btn {
+            background: #6c63ff;
+            color: white;
+        }
+
+        .cancel-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        @media (max-width: 700px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .form-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <div class="logo">
+            ⛓ <span>LandChain</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('land_records') }}">Land Records</a>
+            <a href="{{ url_for('blockchain_explorer') }}">Blockchain</a>
+        </div>
+    </nav>
+</header>
+
+<main class="edit-page">
+
+    <div class="edit-container">
+
+        <div class="edit-header">
+            <h1>Edit Land Record</h1>
+            <p>Update the information stored in your LandChain record.</p>
+        </div>
+
+        <div class="form-card">
+
+            <form method="POST">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label>Owner Name</label>
+                        <input
+                            type="text"
+                            name="owner_name"
+                            value="{{ record['owner_name'] }}"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Guardian Name</label>
+                        <input
+                            type="text"
+                            name="guardian_name"
+                            value="{{ record['guardian_name'] or '' }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Survey Number</label>
+                        <input
+                            type="text"
+                            name="survey_number"
+                            value="{{ record['survey_number'] }}"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Area (Acres)</label>
+                        <input
+                            type="number"
+                            name="area"
+                            step="0.01"
+                            value="{{ record['area'] }}"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Land Type</label>
+
+                        <select name="land_type" required>
+                            <option value="Residential"
+                                {% if record['land_type'] == 'Residential' %}selected{% endif %}>
+                                Residential
+                            </option>
+
+                            <option value="Agricultural"
+                                {% if record['land_type'] == 'Agricultural' %}selected{% endif %}>
+                                Agricultural
+                            </option>
+
+                            <option value="Commercial"
+                                {% if record['land_type'] == 'Commercial' %}selected{% endif %}>
+                                Commercial
+                            </option>
+
+                            <option value="Industrial"
+                                {% if record['land_type'] == 'Industrial' %}selected{% endif %}>
+                                Industrial
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>State</label>
+                        <input
+                            type="text"
+                            name="state"
+                            value="{{ record['state'] }}"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>District</label>
+                        <input
+                            type="text"
+                            name="district"
+                            value="{{ record['district'] }}"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Taluk</label>
+                        <input
+                            type="text"
+                            name="taluk"
+                            value="{{ record['taluk'] or '' }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Village</label>
+                        <input
+                            type="text"
+                            name="village"
+                            value="{{ record['village'] or '' }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Registration Date</label>
+                        <input
+                            type="text"
+                            name="registration_date"
+                            value="{{ record['registration_date'] }}"
+                            placeholder="DD-MM-YYYY"
+                            maxlength="10"
+                            required>
+                    </div>
+
+                    <div class="form-group full">
+                        <label>Address</label>
+                        <textarea
+                            name="address">{{ record['address'] or '' }}</textarea>
+                    </div>
+
+                </div>
+
+                <div class="button-row">
+
+                    <button type="submit" class="save-btn">
+                        Save Changes
+                    </button>
+
+                    <a href="{{ url_for('land_records') }}"
+                       class="cancel-btn">
+                        Cancel
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</main>
+
+</body>
+</html>

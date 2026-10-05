@@ -100,3 +100,61 @@ def get_all_land_records():
     connection.close()
 
     return records
+def delete_land(land_id):
+    connection = get_connection()
+
+    connection.execute("""
+        DELETE FROM land_records
+        WHERE land_id = ?
+    """, (land_id,))
+
+    connection.commit()
+    connection.close()
+
+def update_land(
+    land_id,
+    owner_name,
+    guardian_name,
+    survey_number,
+    area,
+    land_type,
+    state,
+    district,
+    taluk,
+    village,
+    address,
+    registration_date
+):
+    connection = get_connection()
+
+    connection.execute("""
+        UPDATE land_records
+        SET owner_name = ?,
+            guardian_name = ?,
+            survey_number = ?,
+            area = ?,
+            land_type = ?,
+            state = ?,
+            district = ?,
+            taluk = ?,
+            village = ?,
+            address = ?,
+            registration_date = ?
+        WHERE land_id = ?
+    """, (
+        owner_name,
+        guardian_name,
+        survey_number,
+        area,
+        land_type,
+        state,
+        district,
+        taluk,
+        village,
+        address,
+        registration_date,
+        land_id
+    ))
+
+    connection.commit()
+    connection.close()
